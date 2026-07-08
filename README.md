@@ -7,3 +7,6 @@ CoFi-Lite: Pushing the Limits of Ultra-Lightweight Speech Enhancement
 
 ## 🔥 News
 - [**2026-7-7**] The manuscipt is accepted by IEEE SPL.
+
+## 📬 Contact
+Leyan Yang: [leyan.yang@smail.nju.edu.cn](mailto:leyan.yang@smail.nju.edu.cn)
