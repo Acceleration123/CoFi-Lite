@@ -3,7 +3,7 @@
 
 🎉 This is the official implementation of our *IEEE SPL* paper:
 
-CoFi-Lite: Pushing the Limits of Ultra-Lightweight Speech Enhancement
+**"CoFi-Lite: Pushing the Limits of Ultra-Lightweight Speech Enhancement"**
 
 ## 🔥 News
 - [**2026-7-7**] The manuscipt is accepted by IEEE SPL.
