@@ -7,6 +7,7 @@
 [CoFi-Lite: Pushing the Limits of Ultra-Lightweight Speech Enhancement](https://ieeexplore.ieee.org/document/11603399)
 
 ## 🔥 News
+- [**2026-7-14**] The updated paper is uploaded to arxiv.
 - [**2026-7-7**] The manuscipt is accepted by IEEE SPL.
 
 ## ⚠️ Code Release Status
