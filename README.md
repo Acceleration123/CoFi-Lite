@@ -1,5 +1,6 @@
 ## CoFi-Lite
 [![demo](https://img.shields.io/badge/GitHub-Demo-orange.svg)](https://acceleration123.github.io/CoFiLite-demo/)
+[![arxiv](https://img.shields.io/badge/arXiv-Paper-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2607.10142)
 
 🎉 This is the official implementation of our *IEEE SPL* paper:
 
