@@ -81,6 +81,42 @@ python evaluate.py --metric intrusive --config configs/cfg_infer.yaml --device 0
 
 Per-utterance scores are additionally stored as `*.scp` files in the same directories.
 
+## Training
+
+1. **Prepare the data and edit the data paths.** Open `dataloader.py` and set the training/validation folders:
+
+   ```python
+   NOISY_DATABASE_TRAIN = '<path/to/DNS3/train_noisy>'
+   NOISY_DATABASE_VALID = '<path/to/DNS3/dev_noisy>'
+   ```
+
+   > Note: the clean signal of each utterance is located by replacing `noisy` with `clean` in the file path, so the folders must be named accordingly (e.g. `.../train_noisy` and `.../train_clean`).
+
+2. **Edit `configs/cfg_train.yaml`.** The default recipe reproduces the released model:
+
+   | Entry | Default | Description |
+   |---|---|---|
+   | `optimizer.lr` | 1e-3 | Adam learning rate. |
+   | `scheduler.kwargs` | warmup 25k steps, decay until 250k steps, max lr 1e-3, min lr 1e-6 | Linear-warmup cosine-annealing schedule, updated per step. |
+   | `loss` | `lamda_ri=30`, `lamda_mag=70`, `compress_factor=0.3` | Hybrid loss: 30 × compressed RI loss + 70 × compressed magnitude MSE + negative SI-SNR. |
+   | `train_dataset` | 10 s clips, 72k utterances in total, 10k sampled per epoch | 16 kHz training segments. |
+   | `train_dataloader` | batch size 8 | — |
+   | `trainer.epochs` | 200 | Total training epochs. |
+   | `trainer.clip_grad_norm_value` | 3.0 | Gradient clipping. |
+   | `trainer.exp_path` | — | Root directory of the experiment outputs. |
+
+3. **Run training:**
+
+   ```bash
+   # Single GPU
+   python train.py -C configs/cfg_train.yaml -D 0
+
+   # Multi-GPU (DDP), e.g. 4 GPUs
+   python train.py -C configs/cfg_train.yaml -D 0,1,2,3
+   ```
+
+4. **Resume training.** Set `trainer.resume: True` and `trainer.resume_datetime` to the timestamp suffix of the experiment directory (e.g. `2026-05-13-18h19m`); the latest checkpoint in that run's `checkpoints/` folder will be loaded and training continues from the next epoch.
+
 ## Citation
 If you find this work useful, please cite our paper:
 
