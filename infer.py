@@ -4,7 +4,7 @@ import torch
 import soundfile as sf
 from tqdm import tqdm
 from omegaconf import OmegaConf
-from models.cofilite import CoFiLite as Model
+from model.cofilite import CoFiLite as Model
 
 
 def main(args):
