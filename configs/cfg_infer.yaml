@@ -1,0 +1,10 @@
+test_dataset: 
+  noisy_dir: /data/ssd0/leyan.yang/dataset/DNS3/test_noisy
+  clean_dir: /data/ssd0/leyan.yang/dataset/DNS3/test_cleam
+
+network:
+  exp_path: /data/ssd0/leyan.yang/CoFiLite/reproduce
+  config: ${network.exp_path}/config.yaml
+  ckpt_name: model_190
+  checkpoint: ${network.exp_path}/checkpoints/${network.ckpt_name}.tar
+  enh_folder: ${network.exp_path}/${network.ckpt_name}/DNS3

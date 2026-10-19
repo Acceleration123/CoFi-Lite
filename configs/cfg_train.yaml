@@ -1,0 +1,67 @@
+network_config:
+  n_fft: 512
+  hop_len: 256
+  win_len: 512
+
+DDP:
+  world_size: 1
+
+optimizer:
+  lr: 0.001
+
+scheduler:
+  kwargs:
+    warmup_steps: 25000
+    decay_until_step: 250000
+    max_lr: 0.001
+    min_lr: 1.0e-06
+  update_interval: step
+  use_plateau: false
+
+FFT:
+  n_fft: 512
+  hop_length: 256
+  win_length: 512
+
+loss:
+  n_fft: ${FFT.n_fft}
+  hop_len: ${FFT.hop_length}
+  win_len: ${FFT.win_length}
+  compress_factor: 0.3
+  eps: 1.0e-12
+  lamda_ri: 30
+  lamda_mag: 70
+
+train_dataset:
+  length_in_seconds: 10
+  num_data_tot: 72000
+  num_data_per_epoch: 10000
+  random_start_point: false
+  train: true
+
+train_dataloader:
+  batch_size: 8
+  num_workers: 4
+  drop_last: true
+  pin_memory: true
+
+validation_dataset:
+  length_in_seconds: 10
+  random_start_point: false
+  train: false
+
+validation_dataloader:
+  batch_size: 4
+  num_workers: 4
+  pin_memory: true
+
+samplerate: 16000
+
+trainer:
+  epochs: 200
+  save_checkpoint_interval: 1
+  clip_grad_norm_value: 3.0
+  exp_path: /data/ssd0/leyan.yang/CoFiLite/reproduce
+  resume: False
+  resume_datetime: 2026-05-13-18h19m
+
