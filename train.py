@@ -17,7 +17,7 @@ import torch.distributed as dist
 from torch.utils.tensorboard import SummaryWriter
 from distributed_utils import reduce_value
 
-from models.cofilite import CoFiLite as Model
+from model.cofilite import CoFiLite as Model
 from loss_factory import HybridLoss as Loss
 from dataloader import DNS3Dataset as Dataset
 from scheduler import LinearWarmupCosineAnnealingLR as WarmupLR
