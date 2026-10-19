@@ -11,6 +11,30 @@
 - [**2026-7-14**] The final manuscript is uploaded to arxiv.
 - [**2026-7-7**] The manuscipt is accepted by IEEE SPL.
 
+## Introduction
+
+CoFi-Lite is an **ultra-lightweight**, causal speech enhancement model for 16 kHz speech. Two parallel encoder–decoder paths model full-band envelopes and low-frequency details separately, and a Cross-Path Fusion (CPF) module enables efficient feature interaction between them. With only **12.87M MACs/s** and **83.12k parameters**, CoFi-Lite outperforms GTCRN using just 40.26% of its computational complexity.
+
+## Results
+
+Comparison with the ultra-lightweight baseline GTCRN on the simulated DNS3 test set and the DNS Challenge 2020 test set. Best result per metric is in **bold**. Lower is better for MACs/s, Params and RTF; higher is better for the rest.
+
+**Simulated DNS3 test set**
+
+| Model | MACs/s (M) ↓ | Params (k) ↓ | RTF ↓ | PESQ ↑ | ESTOI (%) ↑ | SI-SNR ↑ | DNSMOS P.808 ↑ | DNSMOS P.835 (OVRL/SIG/BAK) ↑ |
+|---|---|---|---|---|---|---|---|---|
+| Noisy | - | - | - | 1.40 | 66.90 | 5.61 | 2.82 | 1.63 / 2.05 / 1.86 |
+| GTCRN | 31.97 | **23.67** | 0.050 | 2.07 | 75.11 | 11.30 | 3.48 | 2.63 / 2.98 / 3.81 |
+| CoFi-Lite | **12.87** | 83.12 | **0.033** | **2.16** | **76.10** | **11.80** | **3.53** | **2.70** / **3.05** / **3.85** |
+
+**DNS Challenge 2020 test set (DNSMOS P.835)**
+
+| Model | No Reverb (OVRL/SIG/BAK) ↑ | With Reverb (OVRL/SIG/BAK) ↑ |
+|---|---|---|
+| Noisy | 2.48 / 3.39 / 2.62 | 1.39 / 1.76 / 1.50 |
+| GTCRN | 3.09 / 3.38 / 4.01 | 2.43 / 2.86 / 3.52 |
+| CoFi-Lite | **3.15** / **3.43** / **4.03** | **2.48** / **2.89** / **3.57** |
+
 ## Repository Structure
 ```
 ├── checkpoint/model_on_dns3.tar    # Pretrained checkpoint (simulated DNS3 dataset)
