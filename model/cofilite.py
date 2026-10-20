@@ -495,7 +495,7 @@ if __name__ == "__main__":
     macs, params = get_model_complexity_info(model, (T,), as_strings=False,
                                               print_per_layer_stat=True, verbose=False)
     
-    print(f"The complexity of DualUNet: MACs={macs/1e6:.2f}, Params={params/1e3:.2f} k\n")
+    print(f"The complexity of CoFi-Lite: MACs={macs/1e6:.2f}, Params={params/1e3:.2f} k\n")
     
     """
     causality check
