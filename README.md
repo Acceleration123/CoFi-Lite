@@ -35,6 +35,19 @@ Comparison with the ultra-lightweight baseline GTCRN on the simulated DNS3 test 
 | GTCRN | 3.09 / 3.38 / 4.01 | 2.43 / 2.86 / 3.52 |
 | CoFi-Lite | **3.15** / **3.43** / **4.03** | **2.48** / **2.89** / **3.57** |
 
+## Notes
+
+- **Band split in the BM module:** The paper (Sec. III-B1) describes a 65 + 64
+  split with the boundary at 2 kHz, while the released code and checkpoint use
+  64 + 65: with `low_lim=2000`, `round(2000 / 16000 * 512) = 64` linear bands
+  are kept unaltered and the remaining 193 bins are merged into 65 ERB bands.
+  All reported results (Tables I and III) were obtained with this released
+  code split. We verified that retraining with the paper's split (65 + 64)
+  yields almost identical performance, i.e., the exact placement of the 2 kHz
+  boundary bin has little practical impact. To use the paper's split instead,
+  set `low_lim=2031.25` (65 / 512 * 16000), which gives 65 + 64 bands — note
+  that the released checkpoint is not compatible with this change.
+
 ## Repository Structure
 ```
 ├── checkpoint/model_on_dns3.tar    # Pretrained checkpoint (simulated DNS3 dataset)
