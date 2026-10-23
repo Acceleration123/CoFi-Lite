@@ -47,6 +47,7 @@ Comparison with the ultra-lightweight baseline GTCRN on the simulated DNS3 test 
   boundary bin has little practical impact. To use the paper's split instead,
   set `low_lim=2031.25` (65 / 512 * 16000), which gives 65 + 64 bands — note
   that the released checkpoint is not compatible with this change.
+   (Thanks to [@atabakp](https://github.com/atabakp) for pointing this out.)
 
 ## Repository Structure
 ```
